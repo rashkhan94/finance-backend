@@ -2,6 +2,9 @@
 
 A RESTful backend service for managing financial data with role-based access control, built as part of a finance dashboard system. The API supports user management, financial record CRUD operations, and analytical dashboard endpoints.
 
+**Live API**: [https://finance-backend-w8h4.onrender.com](https://finance-backend-w8h4.onrender.com)  
+**API Docs**: [https://finance-backend-w8h4.onrender.com/api-docs](https://finance-backend-w8h4.onrender.com/api-docs)
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
@@ -109,7 +112,7 @@ The project follows a **layered architecture** — routes → controllers → se
 
 ```bash
 # 1. Clone the repository
-git clone <repo-url>
+git clone https://github.com/rashkhan94/finance-backend.git
 cd finance-backend
 
 # 2. Install dependencies
@@ -156,7 +159,9 @@ Running `npm run seed` creates three demo users and ~45 financial records:
 
 ## API Documentation
 
-Once the server is running, visit **http://localhost:5000/api-docs** for the full Swagger UI interface. You can test all endpoints directly from the browser.
+The live API documentation is available at **https://finance-backend-w8h4.onrender.com/api-docs**.
+
+For local development, visit **http://localhost:5000/api-docs** after starting the server. You can test all endpoints directly from the browser.
 
 ---
 

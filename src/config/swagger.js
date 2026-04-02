@@ -15,6 +15,10 @@ const options = {
     },
     servers: [
       {
+        url: 'https://finance-backend-w8h4.onrender.com',
+        description: 'Production server (Render)',
+      },
+      {
         url: 'http://localhost:5000',
         description: 'Local development server',
       },
