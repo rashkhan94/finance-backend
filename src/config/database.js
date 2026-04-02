@@ -20,7 +20,11 @@ const connectDB = async () => {
 
     // fallback: use in-memory MongoDB (great for dev/demo without installing Mongo)
     const { MongoMemoryServer } = require('mongodb-memory-server');
-    mongoServer = await MongoMemoryServer.create();
+    mongoServer = await MongoMemoryServer.create({
+      binary: {
+        version: '7.0.4', // Debian 12 on Render requires >= 7.0.3
+      },
+    });
     const memoryUri = mongoServer.getUri();
 
     const conn = await mongoose.connect(memoryUri);
