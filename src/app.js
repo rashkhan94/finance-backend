@@ -43,7 +43,7 @@ app.use('/api', limiter);
 
 // ── API documentation ────────────────────────────────────
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  customCss: '.swagger-ui .topbar { display: none }',
+  customCss: '.swagger-ui .topbar { display: none } .swagger-ui .info hgroup.main .version-stamp, .swagger-ui .info hgroup.main .version, .swagger-ui .info .title span { display: none !important; }',
   customSiteTitle: 'Finance API Docs',
 }));
 
