@@ -1,13 +1,8 @@
 const FinancialRecord = require('../models/FinancialRecord');
 
-/**
- * Dashboard service — aggregation queries for summary data.
- * These use MongoDB's aggregation pipeline for efficiency.
- */
+// all the aggregation logic for the dashboard endpoints
 
-/**
- * Get overall financial summary: total income, expenses, and net balance.
- */
+// overall numbers — income, expenses, balance
 const getSummary = async () => {
   const result = await FinancialRecord.aggregate([
     { $match: { isDeleted: false } },
@@ -44,9 +39,7 @@ const getSummary = async () => {
   };
 };
 
-/**
- * Get category-wise breakdown of income and expenses.
- */
+// how much went into each category
 const getCategoryBreakdown = async () => {
   const breakdown = await FinancialRecord.aggregate([
     { $match: { isDeleted: false } },
@@ -81,9 +74,7 @@ const getCategoryBreakdown = async () => {
   }));
 };
 
-/**
- * Get monthly trends for the last 12 months.
- */
+// monthly income vs expenses for the past year
 const getMonthlyTrends = async () => {
   const twelveMonthsAgo = new Date();
   twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
@@ -123,9 +114,7 @@ const getMonthlyTrends = async () => {
   }));
 };
 
-/**
- * Get recent activity — latest N transactions.
- */
+// just the most recent N records
 const getRecentActivity = async (limit = 10) => {
   const records = await FinancialRecord.find({ isDeleted: false })
     .populate('createdBy', 'name email')

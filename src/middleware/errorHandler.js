@@ -1,9 +1,7 @@
 const ApiError = require('../utils/ApiError');
 
-/**
- * Centralised error-handling middleware.
- * Express identifies this as an error handler by the 4-parameter signature.
- */
+// catches all errors from the routes and sends a nice JSON response
+// express knows this is an error handler because of the 4 params
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };

@@ -1,11 +1,7 @@
 const ApiError = require('../utils/ApiError');
 
-/**
- * Role-based access control middleware.
- * Usage: authorize('admin', 'analyst')  — allows only those roles through.
- *
- * Must be used AFTER the authenticate middleware so req.user is available.
- */
+// only lets certain roles through — use after authenticate()
+// e.g. authorize('admin', 'analyst')
 const authorize = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user) {

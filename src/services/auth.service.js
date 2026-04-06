@@ -3,18 +3,14 @@ const config = require('../config');
 const User = require('../models/User');
 const ApiError = require('../utils/ApiError');
 
-/**
- * Generates a signed JWT for the given user ID.
- */
+// signs a JWT with the user's id
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, config.jwt.secret, {
     expiresIn: config.jwt.expiresIn,
   });
 };
 
-/**
- * Register a new user account.
- */
+
 const register = async ({ name, email, password, role }) => {
   // check if email is already taken
   const existingUser = await User.findOne({ email });
@@ -36,9 +32,7 @@ const register = async ({ name, email, password, role }) => {
   };
 };
 
-/**
- * Authenticate user with email & password, return JWT.
- */
+
 const login = async ({ email, password }) => {
   // need to explicitly select password since it's excluded by default
   const user = await User.findOne({ email }).select('+password');
@@ -69,9 +63,7 @@ const login = async ({ email, password }) => {
   };
 };
 
-/**
- * Get current user profile from the token.
- */
+
 const getProfile = async (userId) => {
   const user = await User.findById(userId);
   if (!user) {

@@ -1,10 +1,7 @@
 const ApiError = require('../utils/ApiError');
 
-/**
- * Generic validation middleware factory.
- * Takes a Joi schema and validates req.body (or req.query / req.params)
- * against it before passing control to the route handler.
- */
+// runs Joi validation on the incoming request data
+// pass the joi schema and which part of req to check (body/query/params)
 const validate = (schema, source = 'body') => {
   return (req, res, next) => {
     const dataToValidate = req[source];

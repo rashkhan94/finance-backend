@@ -1,9 +1,7 @@
 const FinancialRecord = require('../models/FinancialRecord');
 const ApiError = require('../utils/ApiError');
 
-/**
- * Create a new financial record.
- */
+
 const createRecord = async (data, userId) => {
   const record = await FinancialRecord.create({
     ...data,
@@ -12,9 +10,7 @@ const createRecord = async (data, userId) => {
   return record;
 };
 
-/**
- * Get records with filtering, sorting, and pagination.
- */
+// fetches records with optional filters, sorting and pagination
 const getRecords = async (query) => {
   const {
     page = 1,
@@ -69,9 +65,7 @@ const getRecords = async (query) => {
   };
 };
 
-/**
- * Get a single record by its ID.
- */
+
 const getRecordById = async (recordId) => {
   const record = await FinancialRecord.findById(recordId).populate('createdBy', 'name email');
   if (!record) {
@@ -80,9 +74,7 @@ const getRecordById = async (recordId) => {
   return record;
 };
 
-/**
- * Update a financial record.
- */
+
 const updateRecord = async (recordId, updates) => {
   const record = await FinancialRecord.findById(recordId);
   if (!record) {
@@ -97,9 +89,7 @@ const updateRecord = async (recordId, updates) => {
   return record;
 };
 
-/**
- * Soft-delete a financial record.
- */
+// doesn't actually remove the record, just flags it
 const deleteRecord = async (recordId) => {
   const record = await FinancialRecord.findById(recordId);
   if (!record) {

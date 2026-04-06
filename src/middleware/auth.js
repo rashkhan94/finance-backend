@@ -3,10 +3,8 @@ const config = require('../config');
 const ApiError = require('../utils/ApiError');
 const User = require('../models/User');
 
-/**
- * Middleware to verify JWT and attach the user to req.user.
- * Expects: Authorization: Bearer <token>
- */
+// checks the JWT token from Authorization header and loads the user
+// has to run before any protected route
 const authenticate = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;

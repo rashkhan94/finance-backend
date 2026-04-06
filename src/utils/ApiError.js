@@ -1,8 +1,5 @@
-/**
- * Custom error class for API errors.
- * Extends the native Error so we can attach an HTTP status code
- * and any validation-level detail that the error handler can use.
- */
+// wraps errors with an HTTP status code so the error handler
+// knows what to send back to the client
 class ApiError extends Error {
   constructor(statusCode, message, errors = []) {
     super(message);
